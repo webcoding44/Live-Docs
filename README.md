@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Banner](livedioc.png)
+![Banner](livedio.png)
 
 ![Next.js](https://img.shields.io/badge/Next.js-FullStack-black?style=for-the-badge&logo=next.js)
 ![Liveblocks](https://img.shields.io/badge/Liveblocks-Real--Time-blue?style=for-the-badge)
