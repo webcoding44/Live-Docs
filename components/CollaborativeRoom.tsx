@@ -11,6 +11,7 @@ import Image from 'next/image';
 import { updateDocument } from '@/lib/actions/room.actions';
 import Loader from './Loader';
 import ShareModal from './ShareModal';
+import Link from 'next/link';
 
 const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: CollaborativeRoomProps) => {
   const [documentTitle, setDocumentTitle] = useState(roomMetadata.title);
@@ -18,7 +19,7 @@ const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: Col
   const [loading, setLoading] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const updateTitleHandler = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if(e.key === 'Enter') {
@@ -67,6 +68,10 @@ const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: Col
       <ClientSideSuspense fallback={<Loader />}>
         <div className="collaborative-room">
           <Header>
+            <Link href="/" className="back-link" aria-label="Back to documents">
+              <span aria-hidden="true">←</span>
+              <span className="back-label">Documents</span>
+            </Link>
             <div ref={containerRef} className="flex w-fit items-center justify-center gap-2">
               {editing && !loading ? (
                 <Input 
@@ -76,7 +81,7 @@ const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: Col
                   placeholder="Enter title"
                   onChange={(e) => setDocumentTitle(e.target.value)}
                   onKeyDown={updateTitleHandler}
-                  disable={!editing}
+                  disabled={!editing}
                   className="document-title-input"
                 />
               ) : (

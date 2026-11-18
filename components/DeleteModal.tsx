@@ -38,7 +38,7 @@ export const DeleteModal = ({ roomId }: DeleteModalProps) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="min-w-9 rounded-xl bg-transparent p-2 transition-all">
+        <Button aria-label="Delete document" className="delete-document-button">
           <Image
             src="/assets/icons/delete.svg"
             alt="delete"

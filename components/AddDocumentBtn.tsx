@@ -19,11 +19,9 @@ const AddDocumentBtn = ({ userId, email }: AddDocumentBtnProps) => {
   }
 
   return (
-    <Button type="submit" onClick={addDocumentHandler} className="gradient-blue flex gap-1 shadow-md">
-      <Image 
-        src="/assets/icons/add.svg" alt="add" width={24} height={24}
-      />
-      <p className="hidden sm:block">Start a blank document</p>
+    <Button type="button" onClick={addDocumentHandler} className="create-document-button">
+      <Image src="/assets/icons/add.svg" alt="" width={18} height={18} />
+      <span>Create new document</span>
     </Button>
   )
 }
