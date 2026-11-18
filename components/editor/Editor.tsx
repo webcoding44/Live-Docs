@@ -51,25 +51,35 @@ export function Editor({ roomId, currentUserType }: { roomId: string, currentUse
         </div>
 
         <div className="editor-wrapper flex flex-col items-center justify-start">
-          {status === 'not-loaded' || status === 'loading' ? <Loader /> : (
-            <div className="editor-inner min-h-[1100px] relative mb-5 h-fit w-full max-w-[800px] shadow-md lg:mb-10">
-              <RichTextPlugin
-                contentEditable={
-                  <ContentEditable className="editor-input h-full" />
-                }
-                placeholder={<Placeholder />}
-                ErrorBoundary={LexicalErrorBoundary}
-              />
-              {currentUserType === 'editor' && <FloatingToolbarPlugin />}
-              <HistoryPlugin />
-              <AutoFocusPlugin />
-            </div>
-          )}
-
+          <div className="editor-canvas-column">
+            {status === 'not-loaded' || status === 'loading' ? <Loader /> : (
+              <div className="editor-inner min-h-[1100px] relative mb-5 h-fit w-full max-w-[800px] shadow-md lg:mb-10">
+                <RichTextPlugin
+                  contentEditable={
+                    <ContentEditable className="editor-input h-full" />
+                  }
+                  placeholder={<Placeholder />}
+                  ErrorBoundary={LexicalErrorBoundary}
+                />
+                {currentUserType === 'editor' && <FloatingToolbarPlugin />}
+                <HistoryPlugin />
+                <AutoFocusPlugin />
+              </div>
+            )}
+          </div>
           <LiveblocksPlugin>
             <FloatingComposer className="w-[350px]" />
             <FloatingThreads threads={threads} />
-            <Comments />
+            <aside className="collaboration-sidebar" aria-label="Document comments">
+              <div className="comments-panel-heading">
+                <div>
+                  <h2>Comments</h2>
+                  <p>Keep the conversation with your document</p>
+                </div>
+                <span className="comments-count">{threads.length}</span>
+              </div>
+              <Comments />
+            </aside>
           </LiveblocksPlugin>
         </div>
       </div>

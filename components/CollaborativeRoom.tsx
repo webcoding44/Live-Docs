@@ -70,7 +70,7 @@ const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: Col
           <Header>
             <Link href="/" className="back-link" aria-label="Back to documents">
               <span aria-hidden="true">←</span>
-              <span className="back-label">Documents</span>
+              <span>Documents</span>
             </Link>
             <div ref={containerRef} className="flex w-fit items-center justify-center gap-2">
               {editing && !loading ? (

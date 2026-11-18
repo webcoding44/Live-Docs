@@ -9,6 +9,7 @@ import { currentUser } from '@clerk/nextjs/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import { Files, LayoutDashboard } from 'lucide-react';
 
 const Home = async () => {
   const clerkUser = await currentUser();
@@ -27,65 +28,92 @@ const Home = async () => {
           </SignedIn>
         </div>
       </Header>
-      <section className="dashboard-shell">
-        <div className="dashboard-heading">
-          <div>
-            <p className="eyebrow">Workspace</p>
-            <h1>All documents</h1>
-            <p className="dashboard-subtitle">Create, organize, and collaborate in one place.</p>
+      <div className="dashboard-layout">
+        <aside className="dashboard-sidebar" aria-label="Workspace navigation">
+          <div className="workspace-switcher">
+            <span className="workspace-mark"><Files size={18} /></span>
+            <span>
+              <strong>LiveDocs</strong>
+              <small>Personal workspace</small>
+            </span>
           </div>
-          <AddDocumentBtn
-            userId={clerkUser.id}
-            email={clerkUser.emailAddresses[0].emailAddress}
-          />
-        </div>
+          <p className="sidebar-label">Workspace</p>
+          <Link href="/" className="sidebar-link active" aria-current="page">
+            <LayoutDashboard size={17} />
+            <span>All documents</span>
+            <span className="sidebar-count">{documents.length}</span>
+          </Link>
+          <div className="sidebar-note">
+            <span className="status-dot" />
+            <span>Changes sync as you work</span>
+          </div>
+        </aside>
 
-        {roomDocuments?.data ? (
-          documents.length > 0 ? (
-            <div className="document-list-wrap">
-              <div className="document-list-label">
-                <span>Document</span>
-                <span>Last updated</span>
-                <span aria-hidden="true" />
-              </div>
+        <section className="dashboard-shell">
+          <div className="dashboard-heading">
+            <div>
+              <p className="eyebrow">Your workspace</p>
+              <h1>All documents</h1>
+              <p className="dashboard-subtitle">Everything you’re working on, together in one place.</p>
+            </div>
+            <AddDocumentBtn
+              userId={clerkUser.id}
+              email={clerkUser.emailAddresses[0].emailAddress}
+            />
+          </div>
+
+          <div className="documents-section-heading">
+            <div>
+              <h2>Documents</h2>
+              <span>{documents.length} {documents.length === 1 ? 'file' : 'files'}</span>
+            </div>
+          </div>
+
+          {roomDocuments?.data ? (
+            documents.length > 0 ? (
               <ul className="document-ul">
                 {documents.map(({ id, metadata, createdAt }: any) => (
                   <li key={id} className="document-list-item">
                     <Link href={`/documents/${id}`} className="document-link">
-                      <div className="document-icon">
-                        <Image src="/assets/icons/doc.svg" alt="" width={22} height={22} />
+                      <div className="document-card-top">
+                        <div className="document-icon">
+                          <Image src="/assets/icons/doc.svg" alt="" width={24} height={24} />
+                        </div>
+                        <span className="document-open" aria-hidden="true">↗</span>
                       </div>
                       <div className="document-copy">
                         <p className="document-name">{metadata.title}</p>
                         <p className="document-meta">Created {dateConverter(createdAt)}</p>
                       </div>
                     </Link>
-                    <p className="document-updated">{dateConverter(createdAt)}</p>
-                    <DeleteModal roomId={id} />
+                    <div className="document-card-footer">
+                      <span className="document-kind"><span className="status-dot" /> Collaborative document</span>
+                      <DeleteModal roomId={id} />
+                    </div>
                   </li>
                 ))}
               </ul>
-            </div>
-          ) : (
-            <div className="document-list-empty">
-              <div className="empty-icon">
-                <Image src="/assets/icons/doc.svg" alt="" width={34} height={34} />
+            ) : (
+              <div className="document-list-empty">
+                <div className="empty-icon">
+                  <Image src="/assets/icons/doc.svg" alt="" width={34} height={34} />
+                </div>
+                <h2>Your workspace starts here</h2>
+                <p>Create a document to capture ideas, plan projects, or work with your team.</p>
+                <AddDocumentBtn
+                  userId={clerkUser.id}
+                  email={clerkUser.emailAddresses[0].emailAddress}
+                />
               </div>
-              <h2>Create your first document</h2>
-              <p>Start with a blank page and invite others when you are ready.</p>
-              <AddDocumentBtn
-                userId={clerkUser.id}
-                email={clerkUser.emailAddresses[0].emailAddress}
-              />
+            )
+          ) : (
+            <div className="document-list-empty error-state">
+              <h2>Documents could not be loaded</h2>
+              <p>Check your connection and refresh to try again.</p>
             </div>
-          )
-        ) : (
-          <div className="document-list-empty error-state">
-            <h2>Documents could not be loaded</h2>
-            <p>Check your connection and refresh to try again.</p>
-          </div>
-        )}
-      </section>
+          )}
+        </section>
+      </div>
     </main>
   )
 }
