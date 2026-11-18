@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Banner](livedio.jpeg)
+![Banner](livedio.png)
 
 ![Next.js](https://img.shields.io/badge/Next.js-FullStack-black?style=for-the-badge&logo=next.js)
 ![Liveblocks](https://img.shields.io/badge/Liveblocks-Real--Time-blue?style=for-the-badge)
@@ -129,29 +129,6 @@ Designed for every device.
 
 ---
 
-# 🛠️ Tech Stack
-
-## ⚛️ Frontend
-
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
-
----
-
-## ⚡ Real-Time Collaboration
-
-- Liveblocks
-
----
-
-## 🔐 Authentication
-
-- Clerk
-
----
-
 # 🚀 Getting Started
 
 ## 1️⃣ Clone the repository
@@ -202,31 +179,6 @@ http://localhost:3000
 
 ---
 
-# 🔄 System Architecture
-
-```text
-           User
-             │
-             ▼
-     Next.js Frontend
-             │
-             ▼
-      Authentication
-             │
-             ▼
-     Live Document Editor
-             │
-      ┌──────┴──────┐
-      ▼             ▼
- Live Collaboration Comments
-      │             │
-      └──────┬──────┘
-             ▼
-   Notifications & Presence
-```
-
----
-
 # 🌟 Key Highlights
 
 - ✍️ Real-time collaborative editing
@@ -237,33 +189,6 @@ http://localhost:3000
 - 🔔 Real-time notifications
 - 🔐 GitHub authentication
 - 📱 Responsive design
-
----
-
-# 💡 What This Project Demonstrates
-
-This project showcases expertise in:
-
-- Real-time collaboration systems
-- Full-stack Next.js development
-- Multi-user synchronization
-- Authentication & authorization
-- Collaborative UI/UX design
-- Document management
-- Scalable web applications
-
----
-
-# 🚀 Future Improvements
-
-- Version history
-- Offline editing
-- Rich media support
-- Team workspaces
-- Export to PDF
-- AI writing assistant
-- Grammar suggestions
-- Mobile application
 
 ---
 
