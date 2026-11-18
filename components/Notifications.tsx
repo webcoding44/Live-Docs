@@ -26,7 +26,7 @@ const Notifications = () => {
           height={24}
         />
         {count > 0 && (
-          <div className="absolute right-2 top-2 z-20 size-2 rounded-full bg-blue-500" />
+          <div className="absolute right-2 top-2 z-20 size-2 rounded-full bg-teal-500" />
         )}
       </PopoverTrigger>
       <PopoverContent align="end" className="shad-popover">

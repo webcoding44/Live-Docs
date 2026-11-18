@@ -57,7 +57,7 @@ body {
 }
 
 .editor-inner {
-  background: #0b1527;
+  background: #0d211e;
   position: relative;
 }
 
@@ -71,11 +71,11 @@ body {
   outline: 0;
   padding: 40px;
   caret-color: #444;
-  color: #b4c6ee;
+  color: #b7dcd1;
 }
 
 .editor-placeholder {
-  color: #b4c6ee;
+  color: #b7dcd1;
   overflow: hidden;
   position: absolute;
   text-overflow: ellipsis;
@@ -115,7 +115,7 @@ body {
 }
 
 .editor-link {
-  color: rgb(33, 111, 219);
+  color: #12a985;
   text-decoration: none;
 }
 
@@ -319,7 +319,7 @@ pre::-webkit-scrollbar-thumb {
 .toolbar {
   display: flex;
   margin-bottom: 1px;
-  background: #09111f;
+  background: #091a17;
   padding: 4px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -360,7 +360,7 @@ pre::-webkit-scrollbar-thumb {
 }
 
 .toolbar button.toolbar-item.active {
-  background-color: #0f1c34;
+  background-color: #132d29;
 }
 
 .toolbar button.toolbar-item.active i {
@@ -368,12 +368,12 @@ pre::-webkit-scrollbar-thumb {
 }
 
 .toolbar .toolbar-item:hover:not([disabled]) {
-  background-color: #0f1c34;
+  background-color: #132d29;
 }
 
 .toolbar .divider {
   width: 1px;
-  background-color: #0f1c34;
+  background-color: #132d29;
   margin: 0 4px;
 }
 

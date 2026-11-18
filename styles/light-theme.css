@@ -21,7 +21,7 @@ body {
 .cl-avatarBox {
   width: 36px;
   height: 36px;
-  border: 2px solid #2196f3;
+  border: 2px solid #12a985;
 }
 
 /* LEXICAL EDITOR STYLES */
@@ -122,7 +122,7 @@ body {
 }
 
 .editor-link {
-  color: rgb(33, 111, 219);
+  color: #087f65;
   text-decoration: none;
 }
 
